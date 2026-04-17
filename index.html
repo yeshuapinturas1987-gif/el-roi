@@ -128,15 +128,20 @@ footer {
 </footer>
 
 <script>
-const versiculos = [
-"O Senhor é meu pastor, nada me faltará. (Salmos 23:1)",
-"Tudo posso naquele que me fortalece. (Filipenses 4:13)",
-"Entrega teu caminho ao Senhor. (Salmos 37:5)",
-"Deus é nosso refúgio e fortaleza. (Salmos 46:1)",
-"O choro pode durar uma noite... (Salmos 30:5)",
-"Se Deus é por nós, quem será contra nós? (Romanos 8:31)",
-"Buscai primeiro o Reino de Deus. (Mateus 6:33)"
-];
+async function carregarVersiculo() {
+  try {
+    const resposta = await fetch("https://bible-api.com/john%203:16");
+    const dados = await resposta.json();
+    document.getElementById("versiculo").innerText =
+      dados.text + " (" + dados.reference + ")";
+  } catch {
+    document.getElementById("versiculo").innerText =
+      "Entrega teu caminho ao Senhor (Salmos 37:5)";
+  }
+}
+
+carregarVersiculo();
+</script>
 
 // Versículo baseado no dia do ano
 function versiculoDoDia() {
@@ -152,20 +157,7 @@ function mostrar(secao) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(secao).classList.add("active");
 }
-<script>
-async function carregarVersiculo() {
-  try {
-    const resposta = await fetch("https://bible-api.com/john%203:16");
-    const dados = await resposta.json();
-    document.getElementById("versiculo").innerText =
-      dados.text + " (" + dados.reference + ")";
-  } catch {
-    document.getElementById("versiculo").innerText =
-      "Entrega teu caminho ao Senhor (Salmos 37:5)";
-  }
-}
 
-carregarVersiculo();
 </script>
 
 </body>
