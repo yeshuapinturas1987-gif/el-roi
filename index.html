@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pão Diário</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  background: #020617;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #1e293b;
+  padding: 10px;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+section {
+  display: none;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+}
+
+h2 {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #020617;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>📖 Pão Diário</header>
+
+<nav>
+  <button onclick="mostrar('home')">Home</button>
+  <button onclick="mostrar('historias')">Histórias</button>
+  <button onclick="mostrar('estudos')">Estudos</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <h2>Versículo do Dia</h2>
+  <div class="card" id="versiculo"></div>
+</section>
+
+<!-- HISTÓRIAS -->
+<section id="historias">
+  <h2>Histórias Bíblicas</h2>
+
+  <div class="card">
+    <h3>Davi e Golias</h3>
+    <p>A fé de Davi venceu o impossível. Deus usa os improváveis.</p>
+  </div>
+
+  <div class="card">
+    <h3>José do Egito</h3>
+    <p>Mesmo traído, Deus transformou dor em propósito.</p>
+  </div>
+
+  <div class="card">
+    <h3>Moisés</h3>
+    <p>Deus levanta líderes para libertar seu povo.</p>
+  </div>
+
+</section>
+
+<!-- ESTUDOS -->
+<section id="estudos">
+  <h2>Estudos Bíblicos</h2>
+
+  <div class="card">
+    <h3>Fé</h3>
+    <p>Crer sem ver, confiar totalmente em Deus.</p>
+  </div>
+
+  <div class="card">
+    <h3>Oração</h3>
+    <p>É o canal direto com Deus. Fortalece e guia.</p>
+  </div>
+
+  <div class="card">
+    <h3>Propósito</h3>
+    <p>Você não está aqui por acaso. Deus tem um plano.</p>
+  </div>
+
+</section>
+
+<footer>
+  🙏 Deus é fiel em todo tempo
+</footer>
+
+<script>
+const versiculos = [
+"O Senhor é meu pastor, nada me faltará. (Salmos 23:1)",
+"Tudo posso naquele que me fortalece. (Filipenses 4:13)",
+"Entrega teu caminho ao Senhor. (Salmos 37:5)",
+"Deus é nosso refúgio e fortaleza. (Salmos 46:1)",
+"O choro pode durar uma noite... (Salmos 30:5)",
+"Se Deus é por nós, quem será contra nós? (Romanos 8:31)",
+"Buscai primeiro o Reino de Deus. (Mateus 6:33)"
+];
+
+// Versículo baseado no dia do ano
+function versiculoDoDia() {
+  const hoje = new Date();
+  const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
+  return versiculos[diaAno % versiculos.length];
+}
+
+document.getElementById("versiculo").innerText = versiculoDoDia();
+
+// Navegação
+function mostrar(secao) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(secao).classList.add("active");
+}
+</script>
+
+</body>
+</html>
