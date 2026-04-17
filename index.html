@@ -152,6 +152,20 @@ function mostrar(secao) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(secao).classList.add("active");
 }
+<script>
+async function carregarVersiculo() {
+  try {
+    const resposta = await fetch("https://bible-api.com/john%203:16");
+    const dados = await resposta.json();
+    document.getElementById("versiculo").innerText =
+      dados.text + " (" + dados.reference + ")";
+  } catch {
+    document.getElementById("versiculo").innerText =
+      "Entrega teu caminho ao Senhor (Salmos 37:5)";
+  }
+}
+
+carregarVersiculo();
 </script>
 
 </body>
