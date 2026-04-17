@@ -1,155 +1,249 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pão Diário</title>
+<title>El-Roi | O Deus que me vê</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
-  color: white;
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* BASE */
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:white;
+    transition:0.3s;
 }
 
-header {
-  background: #020617;
-  padding: 15px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
+h1,h2,h3{
+    font-family:'Playfair Display',serif;
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  background: #1e293b;
-  padding: 10px;
+/* NAVBAR */
+header{
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(15px);
+    padding:15px;
+    text-align:center;
+    z-index:999;
 }
 
-nav button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+header h1{
+    color:gold;
 }
 
-section {
-  display: none;
-  padding: 20px;
+nav a{
+    margin:10px;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
 }
 
-.active {
-  display: block;
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65') center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
 }
 
-.card {
-  background: #1e293b;
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 12px;
+.hero h2{
+    font-size:2.8rem;
 }
 
-h2 {
-  text-align: center;
+/* SECTIONS */
+.section{
+    padding:80px 20px;
+    text-align:center;
 }
 
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #020617;
-  margin-top: 20px;
+/* CRUZ */
+.cruz{
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+    url('https://images.unsplash.com/photo-1520975916090-3105956dac38') center/cover;
 }
+
+/* SEPULCRO */
+.sepulcro{
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+    url('https://images.unsplash.com/photo-1608889175512-1b0b1cbdc8c2') center/cover;
+}
+
+/* CARD */
+.card{
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+    margin:15px auto;
+    max-width:400px;
+}
+
+/* BOTÃO */
+button{
+    background:gold;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+/* INPUT */
+textarea,input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    margin-top:10px;
+}
+
+/* ORAÇÃO LISTA */
+.post{
+    background:#1a1a1a;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+/* FOOTER */
+footer{
+    padding:20px;
+    text-align:center;
+    border-top:1px solid #222;
+}
+
+/* DARK MODE */
+.light{
+    background:#f5f5f5;
+    color:black;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>📖 Pão Diário</header>
+<header>
+    <h1>El-Roi</h1>
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Estudos</a>
+        <a href="#">Bíblia</a>
+        <a href="#">Oração</a>
+    </nav>
+</header>
 
-<nav>
-  <button onclick="mostrar('home')">Home</button>
-  <button onclick="mostrar('historias')">Histórias</button>
-  <button onclick="mostrar('estudos')">Estudos</button>
-</nav>
-
-<!-- HOME -->
-<section id="home" class="active">
-  <h2>Versículo do Dia</h2>
-  <div class="card" id="versiculo"></div>
+<!-- HERO -->
+<section class="hero">
+    <h2>Você nunca está fora do olhar de Deus</h2>
 </section>
 
-<!-- HISTÓRIAS -->
-<section id="historias">
-  <h2>Histórias Bíblicas</h2>
-
-  <div class="card">
-    <h3>Davi e Golias</h3>
-    <p>A fé de Davi venceu o impossível. Deus usa os improváveis.</p>
-  </div>
-
-  <div class="card">
-    <h3>José do Egito</h3>
-    <p>Mesmo traído, Deus transformou dor em propósito.</p>
-  </div>
-
-  <div class="card">
-    <h3>Moisés</h3>
-    <p>Deus levanta líderes para libertar seu povo.</p>
-  </div>
-
+<!-- VERSÍCULO -->
+<section class="section">
+    <h3>📖 Versículo do Dia</h3>
+    <p id="versiculo"></p>
 </section>
 
-<!-- ESTUDOS -->
-<section id="estudos">
-  <h2>Estudos Bíblicos</h2>
+<!-- CRUZ -->
+<section class="section cruz">
+    <h3>✝️ A Cruz Está Vazia</h3>
+    <p>O sacrifício foi completo.</p>
+</section>
 
-  <div class="card">
-    <h3>Fé</h3>
-    <p>Crer sem ver, confiar totalmente em Deus.</p>
-  </div>
+<!-- SEPULCRO -->
+<section class="section sepulcro">
+    <h3>🪨 O Sepulcro Está Vazio</h3>
+    <p>Ele vive.</p>
+</section>
 
-  <div class="card">
-    <h3>Oração</h3>
-    <p>É o canal direto com Deus. Fortalece e guia.</p>
-  </div>
+<!-- LOGIN -->
+<section class="section">
+    <h3>👤 Área do Usuário</h3>
+    <div class="card">
+        <input id="nome" placeholder="Seu nome">
+        <button onclick="login()">Entrar</button>
+        <p id="usuario"></p>
+    </div>
+</section>
 
-  <div class="card">
-    <h3>Propósito</h3>
-    <p>Você não está aqui por acaso. Deus tem um plano.</p>
-  </div>
-
+<!-- ORAÇÃO -->
+<section class="section">
+    <h3>🙏 Muro de Oração</h3>
+    <div class="card">
+        <textarea id="pedido" placeholder="Digite seu pedido"></textarea>
+        <button onclick="postar()">Enviar</button>
+        <div id="lista"></div>
+    </div>
 </section>
 
 <footer>
-  🙏 Deus é fiel em todo tempo
+    <button onclick="modo()">Modo Claro/Escuro</button>
+    <p>© El-Roi 2026</p>
 </footer>
 
 <script>
-const versiculos = [
-"O Senhor é meu pastor, nada me faltará. (Salmos 23:1)",
-"Tudo posso naquele que me fortalece. (Filipenses 4:13)",
-"Entrega teu caminho ao Senhor. (Salmos 37:5)",
-"Deus é nosso refúgio e fortaleza. (Salmos 46:1)",
-"O choro pode durar uma noite... (Salmos 30:5)",
-"Se Deus é por nós, quem será contra nós? (Romanos 8:31)",
-"Buscai primeiro o Reino de Deus. (Mateus 6:33)"
+
+/* VERSÍCULO AUTOMÁTICO */
+const versiculos=[
+"Salmos 23:1 - O Senhor é meu pastor",
+"Isaías 41:10 - Não temas",
+"Filipenses 4:13 - Tudo posso",
+"Jeremias 29:11 - Planos de paz"
 ];
 
-// Versículo baseado no dia do ano
-function versiculoDoDia() {
-  const hoje = new Date();
-  const diaAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
-  return versiculos[diaAno % versiculos.length];
+function versiculoDia(){
+    const dia=new Date().getDate();
+    document.getElementById("versiculo").innerText=
+    versiculos[dia % versiculos.length];
+}
+versiculoDia();
+
+/* LOGIN */
+function login(){
+    const nome=document.getElementById("nome").value;
+    localStorage.setItem("user",nome);
+    document.getElementById("usuario").innerText="Bem-vindo, "+nome;
 }
 
-document.getElementById("versiculo").innerText = versiculoDoDia();
-
-// Navegação
-function mostrar(secao) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(secao).classList.add("active");
+/* ORAÇÃO */
+function postar(){
+    const texto=document.getElementById("pedido").value;
+    let posts=JSON.parse(localStorage.getItem("posts")||"[]");
+    posts.push(texto);
+    localStorage.setItem("posts",JSON.stringify(posts));
+    carregar();
 }
+
+function carregar(){
+    let posts=JSON.parse(localStorage.getItem("posts")||"[]");
+    let html="";
+    posts.forEach(p=>{
+        html+="<div class='post'>🙏 "+p+"</div>";
+    });
+    document.getElementById("lista").innerHTML=html;
+}
+carregar();
+
+/* DARK MODE */
+function modo(){
+    document.body.classList.toggle("light");
+}
+
 </script>
+
+</body>
+</html>
